@@ -6,45 +6,108 @@
 	<script src="https://d3js.org/d3.v4.js"></script>
 	<script src='https://cdn.plot.ly/plotly-2.4.1.min.js'></script>
 	<script src="wyvern.js"></script>
+	<script src="polar_wyvern.js"></script>
 </head>
 <style>
-div.a {
-  height: 68px;
-  max-width: 1000px;
-  border: 5px solid white;
-}
-
-div.b {
-  height: 50px;
-  border: 1px solid black;  
-}
+	body {
+        font: 14px Arial; 
+        margin: 0px;
+        background: #E9EAEB;
+    }
+    h1 {
+    	color: #ffffff;
+    	margin-top: 0px;
+    	margin-bottom: 0px;
+    }
+    header {
+        padding: 5px 40px;
+        background: #2670B8; 
+        color: #ffffff;
+        box-shadow: 0px 2px 8px #888888;
+	  	border-radius: 10px;
+    }
+	div.a {
+	  height: 64px;
+	  max-width: 1000px;
+	}
+	
+	div.alpha {
+	  padding-top: 0px; 
+	  padding-right: 0px;
+	  padding-left: 45px;
+	  padding-bottom: 10px;
+	}
+	div.beta {
+	  padding: 20px 10px;
+	  max-width: 900px;
+	  background: #D0D6DC;
+	  border-radius: 10px;
+	  box-shadow: 0px 2px 8px #999999;
+	}
+	.column {
+	  float: left;
+	}
+	
+	.left {
+	  width: 50%;
+	}
+	
+	.right {
+	  width: 50%;
+	}
 </style>
 <body>
-	<div class="a" id="plot1"></div>
-	<div class="a" id="plot2"></div>
-	<div class="a" id="plot3"></div>
-	<div class="a" id="plot4"></div>
-	<div class="a" id="plot5"></div>
-	<div class="a" id="plot6"></div>
-	<div class="a" id="plot7"></div>
-	<div class="a" id="plot8"></div>
-	<div class="a" id="plot9"></div>
-	<div class="a" id="plot10"></div>
-	<div class="a" id="plot11"></div>
-	<div class="a" id="plot12"></div>
+	<header>
+		<h1>Wyvern</h1>
+		Version 0.2
+	</header>
+	<div class="alpha">
+		<div class="column left">
+			<div class="beta">
+				<center><h3>Titlestuff</h3></center>
+				Each dot represents a city in the United States. The red bar is Rockford, IL.
+				<div class="a" id="plot1"></div>
+				<div class="a" id="plot2"></div>
+				<div class="a" id="plot3"></div>
+				<div class="a" id="plot4"></div>
+				<div class="a" id="plot5"></div>
+				<div class="a" id="plot6"></div>
+				<div class="a" id="plot7"></div>
+				<div class="a" id="plot8"></div>
+				<div class="a" id="plot9"></div>
+				<div class="a" id="plot10"></div>
+				<div class="a" id="plot11"></div>
+				<div class="a" id="plot12"></div>
+			</div>
+		</div>
+		<div class="column right">
+			<div class="beta">
+				<h1 style="color: #222222">Rockford</h1>
+				<h2>Health</h2>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu finibus metus. Aenean auctor varius augue, quis pretium tellus. Curabitur sed semper lorem, a rhoncus libero. Proin rutrum, orci id placerat luctus, neque nibh viverra diam, nec viverra felis ante eget nisl. Sed vel hendrerit tellus. Praesent elementum scelerisque consectetur. 
+				<div id="polar"></div>
+				<!-- <center>
+				<div style="width: 90%; height: 600px; overflow: hidden">
+					<img src="https://cdn.pixabay.com/photo/2021/08/01/12/58/beach-6514331_960_720.jpg">
+				</div>
+				</center> -->
+			</div>
+		</div>
+	</div>
 	<script>
-		scatterplot("Variable #1","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/1.csv", "plot1")
-		scatterplot("Variable #2","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/2.csv", "plot2")
-		scatterplot("Variable #3","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/3.csv", "plot3")
-		scatterplot("Variable #4","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/4.csv", "plot4")
-		scatterplot("Variable #5","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/5.csv", "plot5")
-		scatterplot("Variable #6","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/6.csv", "plot6")
-		scatterplot("Variable #7","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/7.csv", "plot7")
-		scatterplot("Variable #8","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/8.csv", "plot8")
-		scatterplot("Variable #9","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/9.csv", "plot9")
-		scatterplot("Variable #10","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/10.csv", "plot10")
-		scatterplot("Variable #11","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/11.csv", "plot11")
-		scatterplot("Variable #12","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/12.csv", "plot12")
+		scatterplot("Variable #1","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/1.csv", "plot1");
+		scatterplot("Variable #2","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/2.csv", "plot2");
+		scatterplot("Variable #3","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/3.csv", "plot3");
+		scatterplot("Variable #4","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/4.csv", "plot4");
+		scatterplot("Variable #5","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/5.csv", "plot5");
+		scatterplot("Variable #6","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/6.csv", "plot6");
+		scatterplot("Variable #7","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/7.csv", "plot7");
+		scatterplot("Variable #8","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/8.csv", "plot8");
+		scatterplot("Variable #9","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/9.csv", "plot9");
+		scatterplot("Variable #10","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/10.csv", "plot10");
+		scatterplot("Variable #11","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/11.csv", "plot11");
+		scatterplot("Variable #12","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/12.csv", "plot12");
+		polarplot("polar");
 	</script>
 
 </body>

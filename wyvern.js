@@ -20,6 +20,7 @@ function scatterplot(title_text,csv_location, div_id){
 		let y = [];
 		let value = [];
 		let value_faux = [];
+		let city = [];
 		let row;
 	
 		let i = 0;
@@ -28,18 +29,20 @@ function scatterplot(title_text,csv_location, div_id){
 			y.push(row["y"]);
 			value.push(row["Value"]);
 			value_faux.push(row["ValueFaux"]);
+			city.push(row["City"])
 			i += 1;
 		}
 		
-		makePlotly(y, value, value_faux);
+		makePlotly(y, value, value_faux, city);
 		console.log(y, value, value_faux);
 	}
 	
-	function makePlotly(y, value, value_faux){
+	function makePlotly(y, value, value_faux, city){
 		let traces = [
 		{x: value,
 		y: y,
-		name: "placeholder name",
+		text: city,
+		hovertemplate: '<b>%{text}</b><br><br>' + '<b>%{x}</b>: <i>' + title_text + "</i><extra></extra>",
 		mode: "markers",
 		marker: {
 	                color: "#171717",
@@ -54,8 +57,9 @@ function scatterplot(title_text,csv_location, div_id){
 	    }, //end of first trace
 	    {x:value_faux,
 	    	y: y,
-	    	name: "placeholder name 2",
-	    	mode: "markers",
+	    	text: city,
+			hovertemplate: '<b>%{text}</b><br><br>' + title_text + ': %{x}' + "<extra></extra>",
+			mode: "markers",
 	    	marker: {
 	    		color: "#DA0037",
 	    		line: {
@@ -70,26 +74,28 @@ function scatterplot(title_text,csv_location, div_id){
 	
 		let layout = {
 			automargin: false,
-			margin: {t:24, b:20, r:20, l:20},
+			margin: {t:0, b:20, r:20, l:120},
 			title: {text: title_text,
-					x: .005,
+					x: .12,
 					y: .9,
 					font: {
-						size: 12
-					}
+						size: 17
+					},
+					xanchor: "right"
 
 			},
 			font: {
 				color: "#171717"
 			},
 			hovermode: "closest",
-			paper_bgcolor: "#B9B9B9",
-			plot_bgcolor: "#EDEDED",
+			paper_bgcolor: "#D0D6DC",
+			plot_bgcolor: "#ffffff",
 			xaxis: {
 	            range: [d3.min(value), d3.max(value)],
 	            showgrid: true,
 	            showline: false,
-	            gridcolor: "#C9C9C9"
+	            gridcolor: "#C9C9C9",
+	            hoverformat: '.2f'
 	        },
 	        yaxis: {
 	        	range: [-.5, .5],
