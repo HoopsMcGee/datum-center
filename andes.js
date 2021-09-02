@@ -68,6 +68,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: akron,
+			name: "Akron",
 			mode: "lines",
 			line: {
 				color: regular_color
@@ -76,6 +77,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: peoria,
+			name: "Peoria",
 			mode: "lines",
 			line: {
 				color: regular_color
@@ -84,6 +86,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: south_bend,
+			name: "South Bend",
 			mode: "lines",
 			line: {
 				color: regular_color
@@ -92,6 +95,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: dayton,
+			name: "Dayton",
 			mode: "lines",
 			line: {
 				color: regular_color
@@ -100,6 +104,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: erie,
+			name: "Erie",
 			mode: "lines",
 			line: {
 				color: regular_color
@@ -108,6 +113,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: peer,
+			name: "Peer Average",
 			mode: "markers+lines",
 			line: {
 				color: peer_color
@@ -116,6 +122,7 @@ function area_graph(div_id,csv_location){
 			},//end of trace_1
 			{x: date,
 			y: rockford,
+			name: "Rockford",
 			mode: "markers+lines",
 			line: {
 				color: rockford_color

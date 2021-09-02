@@ -132,10 +132,55 @@
         	background-color: #266fb8;
         	color: #E9EAEB;
         }
+        .no-border{
+        	color: #444444;
+        	position: absolute;
+        	border: 1px solid #aaaaaa;
+        	width: 10%;
+        	left: -30px;
+        	padding-top: 15px;
+        	padding-bottom: 15px;
+        	padding-left: 60px;
+        	padding-right: 30px;
+        	margin-top: 80px;
+        	margin-bottom: 5px;
+        	border-radius: 0 30px 30px 0;
+        }
+        .first{
+        	top: 20px;
+        }
+        .second {
+        	top: 80px;
+        }
+        .third {
+        	top: 140px;
+        }
+        .fourth {
+        	top: 200px;
+        }
+        .fifth {
+        	top: 260px;
+        }
+        .sixth {
+        	position: absolute;
+        	top: 400px;
+        	left: -10px;
+        	width: 10%;
+        }
 	</style>
 </head>
 <body>
-	<div class="column sidebar">sidebar content</div>
+	<div class="column sidebar">
+		<div style="padding-left: 20px;padding-top: 20px;"><h2>Sidebar</h2>Look at all these links!</div>
+		<div style="margin-left: 20px;">
+			<a ref="#" class="myButton invert-blue no-border first">Alpha</a><br>
+			<a ref="#" class="myButton invert-blue no-border second">Beta</a><br>
+			<a ref="#" class="myButton invert-blue no-border third">Gamma</a><br>
+			<a ref="#" class="myButton invert-blue no-border fourth">Delta</a><br>
+			<a ref="#" class="myButton invert-blue no-border fifth">Epsilon</a><br>
+			<div class="card sixth">some info could be placed here for people to read.</div>
+		</div>
+	</div>
 	<div class="column main_content">
 		<div class="title_section">
 			<div class="column left">
