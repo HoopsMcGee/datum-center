@@ -7,8 +7,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<script src="https://d3js.org/d3.v4.js"></script>
 	<script src='https://cdn.plot.ly/plotly-2.4.1.min.js'></script>
-	<script src="andes.js"></script>
-	<script src="simple_graph.js"></script>
+	<script src="income_bar.js"></script>
+	<script src="income_line.js"></script>
 	<!--
 	1.0 = layout done
 	2.0 = unemployment graph
@@ -75,24 +75,25 @@
 		</div>
 		<div class="column left">
 			<div class="card">
-				<h1>Unemployment Rate</h1>
-				National Unemployment shown in green, peer regions shown in grey, peer average shown in dark grey, and Rockford shown in blue.
-				<div id="unemployment_chart"></div>
+				<h1>Median Household Income</h1>
+				How does the middle household of Rockford compare to our peers and the nation in terms of income?
+				<div id="income_line"></div>
 			</div>
 		</div>
 		<div class="column right">
 			<div class="card special">
-				<h1 style="color:white;">Comparison to National Unemployment</h1>
-				How do Rockford and the Peer Regions fare against the Nation?
+				<h1 style="color:white;">Per Capita Personal Income</h1>
+				The inflation-adjusted average income per person measured in US dollars.
+				<br><i style="font-size: 8pt; color:'rgba(255,255,255,0.1)';">Note: y-axis starts at $40k to better illustrate variance between cities.</i>
 				<br>
 				<br>
-				<div id="simple_unemployment"></div>
+				<div id="income_bar"></div>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
-	area_graph("unemployment_chart", "https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/unemployment.csv");
-	unemployment_graph_simple("https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/unemployment_simple.csv", "simple_unemployment")
+	income_bar("income_bar", "https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/income_one_year.csv");
+	income_line("income_line","https://raw.githubusercontent.com/HoopsMcGee/datum-center/main/per_captia_income.csv");
 </script>
 </html>

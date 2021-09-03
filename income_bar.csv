@@ -1,4 +1,4 @@
-function unemployment_graph_simple(csv_location, div_id){
+function workforce_graph(div_id, csv_location){
 	const csv = csv_location;
 	
 	//we read in the dataset
@@ -14,46 +14,33 @@ function unemployment_graph_simple(csv_location, div_id){
 			);
 	}//end of plotfromCSV()
 
-	//this processes the data into a format plotly can use
 	function processData(allRows){
 		let date = [];
-		let peer = [];
-		let rockford = [];
+		let income = [];
+		let color =[];
 		let row;
 	
 		let i = 0;
 		while (i < allRows.length) {
 			row = allRows[i];
 			date.push(row["DATE"]);
-			peer.push(row["Peer Average"]);
-			rockford.push(row["Rockford"]);
+			income.push(row["Income"]);
+			color.push(row["Color"]);
 			i += 1;
 		}
 		
-		makePlotly(date, peer, rockford);
-		console.log(date, peer, rockford);
+		makePlotly(date, income, color);
 	}//end of processData
 
-	function makePlotly(date, peer, rockford){
-		let peer_color = '#222222';
-		let traces =[{x: date,
-			y: rockford,
-			mode: "none",
-			type: "scatter",
-			fill: "tozeroy",
-			name: "Rockford",
-			fillcolor: 'rgba(40,255,255,0.5)',
-			hovertemplate: 'Rockford, IL<br><b>%{y}%</b><br><br>' + '%{x}' + "<extra></extra>",
-			},//end of trace_1
-			{x: date,
-			y: peer,
-			name: "Peer Average",
-			mode: "markers+lines",
-			line: {
-				color: peer_color
-			},
-			hovertemplate: 'Peer Average<br><b>%{y}%</b><br><br>' + '%{x}' + "<extra></extra>",
-			}//end of peer trace
+	function makePlotly(date, income, color){
+		let traces =[
+			{
+				x: date,
+				y: income,
+				name: "Real Per Capita Income",
+				type: "bar",
+				color: color
+			}//end of trace 1
 		];//end of traces
 
 		let layout = {
@@ -72,27 +59,26 @@ function unemployment_graph_simple(csv_location, div_id){
 				color: "#171717"
 			},
 			hovermode: "closest",
-			paper_bgcolor: "#266fb8",
-			plot_bgcolor: "#266fb8",
+			paper_bgcolor: "#ffffff",
+			plot_bgcolor: "#ffffff",
 			xaxis: {
 				range: ['2010-01-01', '2021-01-01'],
-				showgrid: true,
+				showgrid: false,
 				showline: false,
-				gridcolor: "#266fb8",
-				type: 'date'
+				gridcolor: "#E9EAEB"
 			},
 			yaxis: {
-				autorange: 'reversed',
-				range: [-1, 7],
+				range: [0, 100],
 				automargin: true,
-				showgrid: true,
-				gridcolor: "#266fb8",
-				title: 'Additional Unemployment (pp)'
+				showgrid: false,
+				gridcolor: "#E9EAEB",
+				title: '(%)'
 			},
 			showlegend: true,
 			legend: {
 				orientation: "h"
-				}
+				},
+			barmode: 'stack'
 	
 		}; //end of layout
 	
@@ -104,4 +90,4 @@ function unemployment_graph_simple(csv_location, div_id){
 
 	plotFromCSV(); //make the plot
 
-}//end of unemployment_graph_simple()
+};
