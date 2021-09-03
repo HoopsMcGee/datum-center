@@ -68,57 +68,68 @@ function gdp(div_id,csv_location){
 		let traces =[
 			{x: akron,
 			y: akron_gdp,
+			date: date,
 			name: "Akron",
 			mode: "markers",
+			text: date,
 			line: {
 				color: regular_color
 			},
-			hovertemplate: 'Akron, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: 'Akron, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{x: peoria,
 			y: peoria_gdp,
+			date: date,
 			name: "Peoria",
 			mode: "markers",
+			text: date,
 			line: {
 				color: regular_color
 			},
-			hovertemplate: 'Peoria, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: 'Peoria, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{x: south_bend,
 			y: south_bend_gdp,
+			date: date,
 			name: "South Bend",
 			mode: "markers",
+			text: date,
 			line: {
 				color: regular_color
 			},
-			hovertemplate: 'South Bend, IN<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: 'South Bend, IN<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{x: dayton,
 			y: dayton_gdp,
+			date: date,
 			name: "Dayton",
 			mode: "markers",
+			text: date,
 			line: {
 				color: regular_color
 			},
-			hovertemplate: 'Dayton, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: 'Dayton, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{x: erie,
 			y: erie_gdp,
+			date: date,
 			name: "Erie",
 			mode: "markers",
+			text: date,
 			line: {
 				color: regular_color
 			},
-			hovertemplate: 'Erie, PA<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: 'Erie, PA<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{x: rockford,
 			y: rockford_gdp,
+			text: date,
 			name: "Rockford",
 			mode: "markers",
 			line: {
 				color: rockford_color
 			},
-			hovertemplate: 'Rockford, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			//hovertemplate: '<br>Rockford, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
 			},//end of trace_1
 			{
 				x: [170, 810],
