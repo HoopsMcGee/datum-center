@@ -38,31 +38,31 @@ function workforce_graph(div_id, csv_location){
 		let traces =[
 			{
 				x: city,
-				y: notLooking,
-				name: "Not Looking for Work",
-				type: "bar",
-				marker: {
-					color: "#123556"
-				}
-			},//end of trace 1
-			{
-				x: city,
-				y: looking,
-				name: "Looking for Work",
-				type: "bar",
-				marker: {
-					color: "rgb(67,59,57)"
-				}
-			},//end of trace 2
-			{
-				x: city,
 				y: working,
 				name: "Working",
 				type: "bar",
 				marker: {
 					color: "rgb(38,112,184)"
 				}
-			}//end of trace 3
+			},//end of trace 3
+			{
+				x: city,
+				y: looking,
+				name: "Looking for Work",
+				type: "bar",
+				marker: {
+					color: "#222222"
+				}
+			},//end of trace 2
+			{
+				x: city,
+				y: notLooking,
+				name: "Not Looking for Work",
+				type: "bar",
+				marker: {
+					color: "#123556"
+				}
+			}//end of trace 1
 		];//end of traces
 
 		let layout = {

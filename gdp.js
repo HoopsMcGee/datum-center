@@ -24,121 +24,109 @@ function gdp(div_id,csv_location){
 		let south_bend = [];
 		let dayton = [];
 		let erie = [];
+		let national = [];
 		let peer = [];
 		let rockford = [];
-		let akron_gdp = [];
-		let peoria_gdp = [];
-		let south_bend_gdp = [];
-		let dayton_gdp = [];
-		let erie_gdp = [];
-		let peer_gdp = [];
-		let rockford_gdp = [];
 		let row;
 	
 		let i = 0;
 		while (i < allRows.length) {
 			row = allRows[i];
 			date.push(row["DATE"]);
-			akron.push(row["akron pop"]);
-			peoria.push(row["peoria pop"]);
-			south_bend.push(row["south bend pop"])
-			dayton.push(row["dayton pop"]);
-			erie.push(row["erie pop"]);
-			peer.push(row["peer average pop"]);
-			rockford.push(row["rockford pop"]);
-			akron_gdp.push(row["akron gdp"]);
-			peoria_gdp.push(row["peoria gdp"]);
-			south_bend_gdp.push(row["south bend gdp"])
-			dayton_gdp.push(row["dayton gdp"]);
-			erie_gdp.push(row["erie gdp"]);
-			peer_gdp.push(row["peer average gdp"]);
-			rockford_gdp.push(row["rockford gdp"]);
+			akron.push(row["Akron"]);
+			peoria.push(row["Peoria"]);
+			south_bend.push(row["South Bend"])
+			dayton.push(row["Dayton"]);
+			erie.push(row["Erie"]);
+			national.push(row["Nation"]);
+			peer.push(row["Peer Average"]);
+			rockford.push(row["Rockford"]);
 			i += 1;
 		}
 		
-		makePlotly(date, akron, peoria, south_bend, dayton, erie, peer, rockford, akron_gdp, peoria_gdp, south_bend_gdp, dayton_gdp, erie_gdp, peer_gdp, rockford_gdp);
-		console.log(date, akron, peoria, south_bend, dayton, erie, peer, rockford, akron_gdp, peoria_gdp, south_bend_gdp, dayton_gdp, erie_gdp, peer_gdp, rockford_gdp);
+		makePlotly(date, akron, peoria, south_bend, dayton, erie, national, peer, rockford);
+		console.log(date, akron, peoria, south_bend, dayton, erie, national, peer, rockford);
 	}//end of processData
 
-	function makePlotly(date, akron, peoria, south_bend, dayton, erie, peer, rockford, akron_gdp, peoria_gdp, south_bend_gdp, dayton_gdp, erie_gdp, peer_gdp, rockford_gdp){
+	function makePlotly(date, akron, peoria, south_bend, dayton, erie, national, peer, rockford){
 		let rockford_color = 'rgb(38,112,184)';
 		let peer_color = 'rgb(67,59,57)';
 		let national_color = 'RGBA(29, 195, 29, 1)';
 		regular_color = "#aaaaaa";
 		let traces =[
-			{x: akron,
-			y: akron_gdp,
-			date: date,
+			{x: date,
+			y: national,
+			name: "United States",
+			mode: "lines",
+			type: "scatter",
+			line: {
+				color: national_color,
+			},
+			hovertemplate: 'US<br><b>%{y}%</b><br><br>' + '%{x}' + "<extra></extra>",
+			},//end of trace_1
+			{x: date,
+			y: akron,
 			name: "Akron",
-			mode: "markers",
-			text: date,
+			mode: "lines",
 			line: {
 				color: regular_color
 			},
-			//hovertemplate: 'Akron, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			hovertemplate: 'Akron, OH<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
 			},//end of trace_1
-			{x: peoria,
-			y: peoria_gdp,
-			date: date,
+			{x: date,
+			y: peoria,
 			name: "Peoria",
-			mode: "markers",
-			text: date,
+			mode: "lines",
 			line: {
 				color: regular_color
 			},
-			//hovertemplate: 'Peoria, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			hovertemplate: 'Peoria, IL<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
 			},//end of trace_1
-			{x: south_bend,
-			y: south_bend_gdp,
-			date: date,
+			{x: date,
+			y: south_bend,
 			name: "South Bend",
-			mode: "markers",
-			text: date,
+			mode: "lines",
 			line: {
 				color: regular_color
 			},
-			//hovertemplate: 'South Bend, IN<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			hovertemplate: 'South Bend, IN<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
 			},//end of trace_1
-			{x: dayton,
-			y: dayton_gdp,
-			date: date,
+			{x: date,
+			y: dayton,
 			name: "Dayton",
-			mode: "markers",
-			text: date,
+			mode: "lines",
 			line: {
 				color: regular_color
 			},
-			//hovertemplate: 'Dayton, OH<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			hovertemplate: 'Dayton, OH<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
 			},//end of trace_1
-			{x: erie,
-			y: erie_gdp,
-			date: date,
+			{x: date,
+			y: erie,
 			name: "Erie",
-			mode: "markers",
-			text: date,
+			mode: "lines",
 			line: {
 				color: regular_color
 			},
-			//hovertemplate: 'Erie, PA<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
+			hovertemplate: 'Erie, PA<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
 			},//end of trace_1
-			{x: rockford,
-			y: rockford_gdp,
-			text: date,
+			{x: date,
+			y: peer,
+			name: "Peer Average",
+			mode: "markers+lines",
+			line: {
+				color: peer_color
+			},
+			hovertemplate: 'Peer Average<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
+			},//end of trace_1
+			{x: date,
+			y: rockford,
 			name: "Rockford",
-			mode: "markers",
+			mode: "markers+lines",
 			line: {
 				color: rockford_color
 			},
-			//hovertemplate: '<br>Rockford, IL<br>$%{y}<br>' + '%{x}k people' + "<extra></extra>",
-			},//end of trace_1
-			{
-				x: [170, 810],
-				y: [11000,52700],
-				line: {
-				color: national_color
-				},
-				name: "United States GDP per Capita"
-			}
+			hovertemplate: 'Rockford, IL<br><b>$%{y}</b><br><br>' + '%{x}' + "<extra></extra>",
+			}//end of trace_1
 		];//end of traces
 
 		let layout = {
@@ -160,16 +148,16 @@ function gdp(div_id,csv_location){
 			paper_bgcolor: "#ffffff",
 			plot_bgcolor: "#ffffff",
 			xaxis: {
-				range: [170, 810],
 				showgrid: true,
 				showline: false,
-				gridcolor: "#E9EAEB"},
+				gridcolor: "#E9EAEB",
+				type: 'date'
+			},
 			yaxis: {
-				range: [11000, 52700],
 				automargin: true,
 				showgrid: true,
 				gridcolor: "#E9EAEB",
-				title: 'Gross Domestic Product ($1000s)'
+				title: 'Unemployment (%)'
 			},
 			showlegend: true,
 			legend: {

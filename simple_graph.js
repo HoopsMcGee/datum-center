@@ -82,7 +82,6 @@ function unemployment_graph_simple(csv_location, div_id){
 				type: 'date'
 			},
 			yaxis: {
-				autorange: 'reversed',
 				range: [-1, 7],
 				automargin: true,
 				showgrid: true,

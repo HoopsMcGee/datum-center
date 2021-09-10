@@ -148,14 +148,12 @@ function income_line(div_id,csv_location){
 			paper_bgcolor: "#ffffff",
 			plot_bgcolor: "#ffffff",
 			xaxis: {
-				range: ['2010-01-01', '2019-01-01'],
 				showgrid: true,
 				showline: false,
 				gridcolor: "#E9EAEB",
 				type: 'date'
 			},
 			yaxis: {
-				range: [35000, 55000],
 				automargin: true,
 				showgrid: true,
 				gridcolor: "#E9EAEB",
